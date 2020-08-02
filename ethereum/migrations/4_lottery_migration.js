@@ -13,13 +13,13 @@ module.exports = async (deployer, network, [defaultAccount]) => {
       await deployer.deploy(Oracle, LinkToken.address, {
         from: defaultAccount,
       });
-      await deployer.deploy(Lottery, LinkToken.address);
+      await deployer.deploy(Lottery);
     } catch (err) {
       console.error(err);
     }
   } else {
     // For live networks, use the 0 address to allow the ChainlinkRegistry
     // contract automatically retrieve the correct address for you
-    deployer.deploy(Lottery, "0x0000000000000000000000000000000000000000");
+    deployer.deploy(Lottery);
   }
 };

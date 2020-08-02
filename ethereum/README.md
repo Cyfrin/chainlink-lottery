@@ -1,3 +1,12 @@
+Mig:
+// 0xe7E1fF44c1eD2F66e7F0237a92Ed2Fe9D09838EC
+Gov:
+// 0xB53495A2561dd57b3e73f25B07aac187c8B1142f
+Lot:
+// 0xFB2028CD4f112d0907251d6AF7Ab70970Fe69cc4
+Rand:
+// 0x509D01FDd832b2444979F239B505e38d68F9CdfE
+
 # Chainlink Truffle Box
 
 Implementation of a [Chainlink requesting contract](https://docs.chain.link/docs/create-a-chainlinked-project).

@@ -13,16 +13,13 @@ module.exports = async (deployer, network, [defaultAccount]) => {
       await deployer.deploy(Oracle, LinkToken.address, {
         from: defaultAccount,
       });
-      await deployer.deploy(governanceContract, LinkToken.address);
+      await deployer.deploy(governanceContract);
     } catch (err) {
       console.error(err);
     }
   } else {
     // For live networks, use the 0 address to allow the ChainlinkRegistry
     // contract automatically retrieve the correct address for you
-    deployer.deploy(
-      governanceContract,
-      "0x0000000000000000000000000000000000000000"
-    );
+    deployer.deploy(governanceContract);
   }
 };

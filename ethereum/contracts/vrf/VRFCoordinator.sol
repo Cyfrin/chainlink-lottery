@@ -1,8 +1,8 @@
 pragma solidity 0.6.6;
 
-import "./vendor/SafeMath.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
 
-import "./interfaces/LinkTokenInterface.sol";
+import "../interfaces/LinkTokenInterface.sol";
 
 import "./VRF.sol";
 import "./VRFRequestIDBase.sol";
