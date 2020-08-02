@@ -8,11 +8,11 @@ contract Lottery is ChainlinkClient {
     GovernanceInterface public governanceContract;
     uint256 lotteryId = 0;
     address payable[] public players;
-    bool OPEN;
+    bool public OPEN;
     // .01 ETH
-    uint256 MINIMUM = 1000000000000000;
+    uint256 public MINIMUM = 1000000000000000;
     // 0.1 LINK
-    uint256 ORACLE_PAYMENT = 100000000000000000;
+    uint256 public ORACLE_PAYMENT = 100000000000000000;
     // Alarm stuff
     address CHAINLINK_ALARM_ORACLE = 0xc99B3D447826532722E41bc36e644ba3479E4365;
     string CHAINLINK_ALARM_JOB_ID = "0x2ebb1c1a4b1e4229adac24ee0b5f784f";

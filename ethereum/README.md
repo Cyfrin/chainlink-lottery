@@ -1,11 +1,23 @@
 Mig:
-// 0xe7E1fF44c1eD2F66e7F0237a92Ed2Fe9D09838EC
+// 0x2f78A890cD7E6F490e548d54F645b27986651103
 Gov:
-// 0xB53495A2561dd57b3e73f25B07aac187c8B1142f
+// 0x54f60Ea520A83E4F2746A44Ea47bE7bFf5FeEf85
 Lot:
-// 0xFB2028CD4f112d0907251d6AF7Ab70970Fe69cc4
+// 0xd311927b00E539774506785Ed4536B7A811ebf3a
 Rand:
-// 0x509D01FDd832b2444979F239B505e38d68F9CdfE
+// 0xfAf63Bf938c859C83C045b213Dc1db2db4A7fD3E
+
+To deploy all the contracts
+`truffle migrate --reset --network=live`
+`truffle console --network live`
+`let lottery = await Lottery.deployed()`
+`let accounts = await web3.eth.getAccounts()`
+`lottery.enter({from: accounts[1], value:100000000000000000})`
+
+You should see something in the resulting ropsten
+
+To test:
+`truffle test`
 
 # Chainlink Truffle Box
 
