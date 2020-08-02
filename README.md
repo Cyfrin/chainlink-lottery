@@ -19,3 +19,17 @@ npm install --save solc@0.6.6
 brew install https://raw.githubusercontent.com/ethereum/homebrew-ethereum/de827603ab5095abbe4edce3ef282e783fc352a2/solidity.rb
 solc github.com/smartcontractkit/chainlink/=/usr/local/chainlink/ Lottery.sol
 ```
+
+# To run:
+
+```
+git clone <this_repo>
+cd chainlink-lottery
+npm install
+```
+
+Make sure you have `RPC_URL` and `MNEMONIC` in your environment variables
+
+# Mirgrate
+
+`truffle migreate --network live`
