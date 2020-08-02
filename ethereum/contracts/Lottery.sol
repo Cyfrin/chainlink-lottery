@@ -1,9 +1,13 @@
-pragma solidity 0.6.6;
+pragma solidity ^0.6.6;
+import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "./remix_contracts/RandomNumberGenerator.sol";
+import {GovernanceInterface} from "./interfaces/governance.sol";
+import {RandomnessInterface} from "./interfaces/randomness.sol";
 
-import "https://raw.githubusercontent.com/smartcontractkit/chainlink/7a4e19a8ff07db1be0b397465d38d175bc0bb5b5/evm-contracts/src/v0.6/VRFConsumerBase.sol";
-import "github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/ChainlinkClient.sol";
-
-contract LotteryMan is VRFConsumerBase, ChainlinkClient {
+contract Lottery is ChainlinkClient {
+    GovernanceInterface public governanceContract;
+    uint256 lotteryId = 0;
     address payable[] public players;
     bool OPEN = true;
     // .01 ETH
@@ -16,14 +20,16 @@ contract LotteryMan is VRFConsumerBase, ChainlinkClient {
     //VRF stuff
     bytes32 internal _keyHash;
     uint256 public RANDOMRESULT;
+    address public VRFAddress = 0x6ABd8BB710f383E1446882710DE4C2C2b9dbF449;
+    RandomNumberGenerator rng;
 
-    constructor()
-        public
-        VRFConsumerBase(
-            0xf720CF1B963e0e7bE9F58fd471EFa67e7bF00cfb, // VRF Coordinator
-            0x20fE562d797A42Dcb3399062AE9546cd06f63280 // LINK Token
-        )
+    constructor() public // VRFConsumerBase(
+    //     0xf720CF1B963e0e7bE9F58fd471EFa67e7bF00cfb, // VRF Coordinator
+    //     0x20fE562d797A42Dcb3399062AE9546cd06f63280 // LINK Token
+    // )
     {
+        RandomNumberGenerator rng = RandomNumberGenerator(VRFAddress);
+        lotteryId = 1;
         manager = msg.sender;
         _keyHash = 0xced103054e349b8dfb51352f0f8fa9b5d20dde3d06f9f43cb2b85bc64b238205;
         // _fee = 0.1 * 10**18; // 0.1 LINK
@@ -39,29 +45,29 @@ contract LotteryMan is VRFConsumerBase, ChainlinkClient {
         players.push(msg.sender);
     }
 
-    function getRandomNumber() private returns (bytes32 requestId) {
-        uint256 userProvidedSeed = 3453234;
-        require(
-            LINK.balanceOf(address(this)) > fee,
-            "Not enough LINK - fill contract with faucet"
-        );
-        return requestRandomness(keyHash, fee, userProvidedSeed);
-    }
+    // function getRandomNumber() private returns (bytes32 requestId) {
+    //     uint256 userProvidedSeed = 3453234;
+    //     require(
+    //         LINK.balanceOf(address(this)) > fee,
+    //         "Not enough LINK - fill contract with faucet"
+    //     );
+    //     return requestRandomness(keyHash, ORACLE_PAYMENT, userProvidedSeed);
+    // }
 
-    /**
-     * Callback function used by VRF Coordinator
-     */
-    function fulfillRandomness(bytes32 requestId, uint256 randomness)
-        external
-        override
-    {
-        require(
-            msg.sender == vrfCoordinator,
-            "Fulillment only permitted by Coordinator"
-        );
-        RANDOMRESULT = randomness;
-        pickWinner();
-    }
+    // /**
+    //  * Callback function used by VRF Coordinator
+    //  */
+    // function fulfillRandomness(bytes32 requestId, uint256 randomness)
+    //     external
+    //     override
+    // {
+    //     require(
+    //         msg.sender == vrfCoordinator,
+    //         "Fulillment only permitted by Coordinator"
+    //     );
+    //     RANDOMRESULT = randomness;
+    //     pickWinner();
+    // }
 
     function start_next_lottery() private {
         Chainlink.Request memory req = buildChainlinkRequest(
@@ -78,9 +84,21 @@ contract LotteryMan is VRFConsumerBase, ChainlinkClient {
         recordChainlinkFulfillment(_requestId)
     {
         OPEN = false;
-        getRandomNumber();
+        rng.getRandomNumber(lotteryId);
+        lotteryID = lotteryId + 1;
         //start_next_lottery();
         //OPEN = true;
+    }
+
+    function fulfillRandomness(bytes32 requestId, uint256 randomness)
+        external
+        override
+    {
+        require(
+            msg.sender == vrfCoordinator,
+            "Fulfilment only permitted by Coordinator"
+        );
+        randomResult = randomness;
     }
 
     function pickWinner() private {
