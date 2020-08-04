@@ -4,6 +4,21 @@ You can play with this in [remix here](https://remix.ethereum.org/#version=soljs
 
 A web3 implementation of a decentralized provably random lottery using Chainlink VRF and Chainlink alarm clock to have a totally decentralized lottery. Check the ETH readme for how to do the truffle stuff. 
 
+The front end is super broken. 
+
+If you play with it in remix, do the following:
+
+1. Deploy the governance contract
+2. Deploy the randomness contract with the governance contract address as a parameter
+3. Deploy the lottery contract with the governance contract address as a parameter
+4. call the governance function `init` with the lottery address, followed by the randomness address as parameters
+5. fund the randomness and lottery contract with some LINK
+6. Call the `start_new_lottery` function, with a duration you'd like it to last in seconds.
+7. Enter the lottery and have fun.
+8. After the duration is up, the winner should be automatically randomly chosen via Chainlink VRF
+
+You'll notice there are a few permission hiccups, but this is a beta so whatever. 
+
 # To run:
 
 ```
