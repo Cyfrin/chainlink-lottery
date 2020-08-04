@@ -7,5 +7,5 @@ module.exports = async function(deployer, network, accounts) {
   var lotteryContract = await lottery.deployed();
   var randomnessContract = await randomness.deployed();
 
-  await lotteryContract.start_new_lottery();
+  await lotteryContract.start_new_lottery(90);
 };
