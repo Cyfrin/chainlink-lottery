@@ -4,7 +4,7 @@ You can play with this in [remix here](https://remix.ethereum.org/#version=soljs
 
 A web3 implementation of a decentralized provably random lottery using Chainlink VRF and Chainlink alarm clock to have a totally decentralized lottery. Check the ETH readme for how to do the truffle stuff. 
 
-The front end is super broken. 
+## The front end is super broken. 
 
 If you play with it in remix, do the following:
 
