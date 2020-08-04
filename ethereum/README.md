@@ -8,11 +8,19 @@ Rand:
 // 0xfAf63Bf938c859C83C045b213Dc1db2db4A7fD3E
 
 To deploy all the contracts
-`truffle migrate --reset --network=live`
-`truffle console --network live`
-`let lottery = await Lottery.deployed()`
-`let accounts = await web3.eth.getAccounts()`
-`lottery.enter({from: accounts[1], value:100000000000000000})`
+
+For some reason this shit doesn't work plz help
+```
+truffle migrate --reset --network=live
+truffle console --network live
+let lottery = await Lottery.deployed()
+let randomness = await Randomness.deployed()
+// Get the address of lottery and randomness from the above two, and fund them with some LINK
+let accounts = await web3.eth.getAccounts()
+// a 90 second long lottery
+lottery.start_new_lottery(90)
+lottery.enter({from: accounts[0], value:1000000000000000})
+```
 
 You should see something in the resulting ropsten
 

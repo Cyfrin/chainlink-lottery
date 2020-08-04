@@ -1,8 +1,8 @@
 pragma solidity 0.6.6;
 
-import "./vrf/VRFConsumerBase.sol";
-import {lottery_interface} from "./interfaces/lottery_interface.sol";
-import {governance_interface} from "./interfaces/governance_interface.sol";
+import "https://raw.githubusercontent.com/smartcontractkit/chainlink/7a4e19a8ff07db1be0b397465d38d175bc0bb5b5/evm-contracts/src/v0.6/VRFConsumerBase.sol";
+import {lottery_man_interface} from "./lottery_man_interface.sol";
+import {governance_interface} from "./governance_interface.sol";
 
 contract RandomNumberConsumer is VRFConsumerBase {
     
@@ -50,7 +50,7 @@ contract RandomNumberConsumer is VRFConsumerBase {
         most_recent_random = randomness;
         uint lotteryId = requestIds[requestId];
         randomNumber[lotteryId] = randomness;
-        lottery_interface(governance.lottery()).fulfill_random(randomness);
+        lottery_man_interface(governance.lottery()).fulfill_random(randomness);
     }
 }
 

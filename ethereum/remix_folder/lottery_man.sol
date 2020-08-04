@@ -1,7 +1,7 @@
 pragma solidity ^0.6.6;
-import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
-import {randomness_interface} from "./interfaces/randomness_interface.sol";
-import {governance_interface} from "./interfaces/governance_interface.sol";
+import "github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/ChainlinkClient.sol";
+import {Randomness_interface} from "./Randomness_interface.sol";
+import {governance_interface} from "./governance_interface.sol";
 
 contract Lottery is ChainlinkClient {
     enum LOTTERY_STATE { OPEN, CLOSED, CALCULATING_WINNER }
@@ -43,7 +43,6 @@ contract Lottery is ChainlinkClient {
     public
     recordChainlinkFulfillment(_requestId)
       {
-        require(lottery_state == LOTTERY_STATE.OPEN, "The lottery hasn't even started!");
         // add a require here so that only the oracle contract can
         // call the fulfill alarm method
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
@@ -54,7 +53,7 @@ contract Lottery is ChainlinkClient {
 
     function pickWinner() private {
         require(lottery_state == LOTTERY_STATE.CALCULATING_WINNER, "You aren't at that stage yet!");
-        randomness_interface(governance.randomness()).getRandom(lotteryId, lotteryId);
+        Randomness_interface(governance.randomness()).getRandom(lotteryId, lotteryId);
         //this kicks off the request and returns through fulfill_random
     }
     
