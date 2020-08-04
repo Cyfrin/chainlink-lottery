@@ -6,7 +6,7 @@ A web3 implementation of a decentralized provably random lottery using Chainlink
 
 ## The front end is super broken. 
 
-If you play with it in remix, do the following:
+# If you play with it in remix, do the following:
 
 1. Deploy the governance contract
 2. Deploy the randomness contract with the governance contract address as a parameter
