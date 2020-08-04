@@ -8,14 +8,15 @@ A web3 implementation of a decentralized provably random lottery using Chainlink
 
 # If you play with it in remix, do the following:
 
-1. Deploy the governance contract
-2. Deploy the randomness contract with the governance contract address as a parameter
-3. Deploy the lottery contract with the governance contract address as a parameter
-4. call the governance function `init` with the lottery address, followed by the randomness address as parameters
-5. fund the randomness and lottery contract with some LINK
-6. Call the `start_new_lottery` function, with a duration you'd like it to last in seconds.
-7. Enter the lottery and have fun.
-8. After the duration is up, the winner should be automatically randomly chosen via Chainlink VRF
+1. Compile all contracts and interfaces
+2. Deploy the governance contract
+3. Deploy the randomness contract with the governance contract address as a parameter
+4. Deploy the lottery contract with the governance contract address as a parameter
+5. call the governance function `init` with the lottery address, followed by the randomness address as parameters
+6. fund the randomness and lottery contract with some LINK
+7. Call the `start_new_lottery` function, with a duration you'd like it to last in seconds.
+8. Enter the lottery and have fun.
+9. After the duration is up, the winner should be automatically randomly chosen via Chainlink VRF - and the lottery will totally reset, so you can start another one. 
 
 You'll notice there are a few permission hiccups, but this is a beta so whatever. 
 
