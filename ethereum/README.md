@@ -2,7 +2,7 @@
 
 To deploy all the contracts
 
-For some reason this shit doesn't work plz help
+For some reason the console part doesn't work :/
 ```
 truffle migrate --reset --network=live
 truffle console --network live
