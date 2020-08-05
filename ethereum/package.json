@@ -18,6 +18,7 @@
     "@chainlink/contracts": "^0.0.8",
     "@openzeppelin/contracts": "^3.1.0",
     "@truffle/hdwallet-provider": "^1.0.40",
+    "ethers": "^5.0.8",
     "husky": "^4.2.5"
   },
   "devDependencies": {

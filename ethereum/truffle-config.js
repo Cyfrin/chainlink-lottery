@@ -20,6 +20,8 @@ module.exports = {
       // ~~Necessary due to https://github.com/trufflesuite/truffle/issues/1971~~
       // Necessary due to https://github.com/trufflesuite/truffle/issues/3008
       skipDryRun: true,
+      // Ropsten
+      linkAddress: "0x20fE562d797A42Dcb3399062AE9546cd06f63280",
     },
   },
   compilers: {
