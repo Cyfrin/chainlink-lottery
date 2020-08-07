@@ -2,9 +2,9 @@
 
 You can play with this in [remix here](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&gist=b3939b346828763673a188007e8f487c)
 
-A web3 implementation of a decentralized provably random lottery using Chainlink VRF and Chainlink alarm clock to have a totally decentralized lottery. Check the ETH readme for how to do the truffle stuff. 
+A web3 implementation of a decentralized provably random lottery using Chainlink VRF and Chainlink alarm clock to have a totally decentralized lottery. Check the ETH readme for how to do the truffle stuff.
 
-## The front end is super broken. 
+## The front end is super broken.
 
 # If you play with it in remix, do the following:
 
@@ -16,22 +16,22 @@ A web3 implementation of a decentralized provably random lottery using Chainlink
 6. fund the randomness and lottery contract with some LINK
 7. Call the `start_new_lottery` function, with a duration you'd like it to last in seconds.
 8. Enter the lottery and have fun.
-9. After the duration is up, the winner should be automatically randomly chosen via Chainlink VRF - and the lottery will totally reset, so you can start another one. 
+9. After the duration is up, the winner should be automatically randomly chosen via Chainlink VRF - and the lottery will totally reset, so you can start another one.
 
-You'll notice there are a few permission hiccups, but this is a beta so whatever. 
+You'll notice there are a few permission hiccups, but this is a beta so whatever.
 
 # To run:
 
 ```
 git clone <this_repo>
 cd chainlink-lottery
-npm install --save solc@0.6.6
 npm install
 ```
 
 Make sure you have `RPC_URL` and `MNEMONIC` in your environment variables
 
-# To set this up from scratch, you can run:
+# To set this template up from scratch, you can run:
+
 Setup:
 
 ```
