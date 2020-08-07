@@ -1,6 +1,6 @@
 # chainlink-lottery
 
-You can play with this in [remix here](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&gist=b3939b346828763673a188007e8f487c)
+You can play with this in [remix here](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&gist=1bb62664cfad04de04d9dc5d059eb519)
 
 A web3 implementation of a decentralized provably random lottery using Chainlink VRF and Chainlink alarm clock to have a totally decentralized lottery. Check the ETH readme for how to do the truffle stuff.
 
